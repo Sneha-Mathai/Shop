@@ -14,6 +14,11 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
     }
+    
+    protected $middlewareAliases = [
+    // ...existing...
+    'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+];
 
     /**
      * Register the commands for the application.

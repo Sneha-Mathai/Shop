@@ -1,30 +1,41 @@
-<h1>Edit Product</h1>
+@extends('layouts.shop')
 
-@if ($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@section('content')
+    <a href="{{ route('home') }}" class="back-link">&larr; Back to products</a>
+
+    <div class="card-lg panel-narrow mt-6">
+        <h1 class="text-xl font-semibold tracking-tight text-slate-900">Edit product</h1>
+
+        <form action="{{ route('products.update', $product) }}" method="POST" class="mt-6">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" rows="4" class="form-input">{{ old('description', $product->description) }}</textarea>
+            </div>
+
+            <div class="form-grid-2 form-group">
+                <div>
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" step="0.01" min="0" name="price" id="price" value="{{ old('price', $product->price) }}" required class="form-input">
+                </div>
+
+                <div>
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" min="0" name="stock" id="stock" value="{{ old('stock', $product->stock) }}" required class="form-input">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Update product</button>
+                <a href="{{ route('home') }}" class="btn-outline">Cancel</a>
+            </div>
+        </form>
     </div>
-@endif
-
-<form action="{{ route('products.update', $product->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-
-    <label>Name:</label>
-    <input type="text" name="name" value="{{ $product->name }}" required><br><br>
-
-    <label>Description:</label>
-    <textarea name="description">{{ $product->description }}</textarea><br><br>
-
-    <label>Price:</label>
-    <input type="number" step="0.01" name="price" value="{{ $product->price }}" required><br><br>
-
-    <label>Stock:</label>
-    <input type="number" name="stock" value="{{ $product->stock }}" required><br><br>
-
-    <button type="submit">Update Product</button>
-</form>
+@endsection

@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* Header / nav */
+    .site-header    { @apply border-b border-slate-200 bg-white; }
+    .site-header__inner { @apply mx-auto flex max-w-6xl items-center justify-between px-6 py-4; }
+    .brand          { @apply text-lg font-semibold tracking-tight text-slate-900; }
+    .brand-dot      { @apply text-teal-600; }
+    .site-nav       { @apply flex items-center gap-6 text-sm font-medium text-slate-600; }
+    .nav-link       { @apply hover:text-slate-900; }
+
+    /* Buttons */
+    .btn            { @apply rounded-md px-4 py-2 text-sm font-medium; }
+    .btn-outline    { @apply btn border border-slate-300 text-slate-700 hover:bg-slate-50; }
+    .btn-primary    { @apply btn bg-teal-600 text-white hover:bg-teal-700; }
+    .btn-danger     { @apply text-sm font-medium text-red-600 hover:text-red-700; }
+    .btn-muted      { @apply text-sm font-medium text-slate-600 hover:text-slate-900; }
+    .back-link      { @apply text-sm font-medium text-slate-500 hover:text-slate-900; }
+
+    /* Layout / page shell */
+    .page-main      { @apply mx-auto max-w-6xl px-6 py-10; }
+
+    /* Alerts */
+    .alert          { @apply mb-6 rounded-md px-4 py-3 text-sm; }
+    .alert-success  { @apply alert border border-teal-200 bg-teal-50 font-medium text-teal-800; }
+    .alert-error    { @apply alert border border-red-200 bg-red-50 text-red-800; }
+
+    /* Cards */
+    .card           { @apply rounded-lg border border-slate-200 bg-white p-5 shadow-sm; }
+    .card-lg        { @apply rounded-lg border border-slate-200 bg-white p-8 shadow-sm; }
+    .card-actions   { @apply mt-4 flex gap-3 border-t border-slate-100 pt-4 text-sm; }
+
+    /* Product grid + cards */
+    .product-grid   { @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3; }
+    .product-card   { @apply card flex flex-col justify-between; }
+    .product-title  { @apply text-base font-semibold text-slate-900 hover:text-teal-700; }
+    .product-desc   { @apply mt-2 text-sm text-slate-500; }
+    .product-footer { @apply mt-4 flex items-center justify-between border-t border-slate-100 pt-4; }
+    .price          { @apply text-lg font-semibold text-slate-900; }
+    .price-lg       { @apply text-2xl font-semibold text-slate-900; }
+    .stock-in       { @apply text-xs font-medium text-teal-700; }
+    .stock-out      { @apply text-xs font-medium text-red-600; }
+    .stock-in-lg    { @apply text-sm font-medium text-teal-700; }
+    .stock-out-lg   { @apply text-sm font-medium text-red-600; }
+
+    /* Empty state */
+    .empty-state    { @apply rounded-lg border border-dashed border-slate-300 bg-white px-6 py-16 text-center; }
+
+    /* Forms */
+    .form-group     { @apply mb-5; }
+    .form-label     { @apply block text-sm font-medium text-slate-700; }
+    .form-input     { @apply mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500; }
+    .form-grid-2    { @apply grid grid-cols-2 gap-4; }
+    .form-actions   { @apply flex gap-3 pt-2; }
+
+    /* Panel width helpers */
+    .panel-narrow   { @apply max-w-xl; }
+    .panel-medium   { @apply max-w-2xl; }
+    .block-link     { @apply inline-block; }
+}

@@ -1,22 +1,40 @@
-<h1>Add Product</h1>
+@extends('layouts.shop')
 
-@if(session('success'))
-    <p style="color: green;">{{ session('success') }}</p>
-@endif
+@section('content')
+    <a href="{{ route('home') }}" class="back-link">&larr; Back to products</a>
 
-<form action="{{ route('products.store') }}" method="POST">
-    @csrf
-    <label>Name:</label>
-    <input type="text" name="name" required><br><br>
+    <div class="card-lg panel-narrow mt-6">
+        <h1 class="text-xl font-semibold tracking-tight text-slate-900">Add a product</h1>
 
-    <label>Description:</label>
-    <textarea name="description"></textarea><br><br>
+        <form action="{{ route('products.store') }}" method="POST" class="mt-6">
+            @csrf
 
-    <label>Price:</label>
-    <input type="number" step="0.01" name="price" required><br><br>
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" value="{{ old('name') }}" required class="form-input">
+            </div>
 
-    <label>Stock:</label>
-    <input type="number" name="stock" required><br><br>
+            <div class="form-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" rows="4" class="form-input">{{ old('description') }}</textarea>
+            </div>
 
-    <button type="submit">Save Product</button>
-</form>
+            <div class="form-grid-2 form-group">
+                <div>
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" step="0.01" min="0" name="price" id="price" value="{{ old('price') }}" required class="form-input">
+                </div>
+
+                <div>
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" min="0" name="stock" id="stock" value="{{ old('stock') }}" required class="form-input">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Save product</button>
+                <a href="{{ route('home') }}" class="btn-outline">Cancel</a>
+            </div>
+        </form>
+    </div>
+@endsection
