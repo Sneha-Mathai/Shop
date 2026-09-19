@@ -20,7 +20,25 @@
         </div>
     @else
         <div class="product-grid">
-     @foreach ($products as $product)
+
+        <div id="product-list" class="product-grid"></div>
+
+<!--<script type="module">
+    //import axios from 'axios'; // already available via your bootstrap.js/Vite setup
+
+    axios.get('/api/products').then(response => {
+        const container = document.getElementById('product-list');
+        response.data.data.forEach(product => {
+            container.insertAdjacentHTML('beforeend', `
+                <div class="product-card">
+                    <div class="product-title">${product.name}</div>
+                    <div class="price">$${product.price}</div>
+                </div>
+            `);
+        });
+    });
+</script>!-->
+  @foreach ($products as $product)
     <div class="product-card">
         <a href="{{ route('products.show', $product) }}" class="product-link">
             <div>
@@ -59,7 +77,7 @@
             @endif
         @endauth
     </div>
-@endforeach
+@endforeach 
         </div>
     @endif
 @endsection

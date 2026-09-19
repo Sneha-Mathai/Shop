@@ -9,6 +9,11 @@
         @if ($product->description)
             <p class="mt-4 text-slate-600">{{ $product->description }}</p>
         @endif
+        <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-4 flex items-center gap-3">
+    @csrf
+    <input type="number" name="quantity" value="1" min="1" max="{{ $product->stock }}" class="form-input w-20">
+    <button type="submit" class="btn-primary" @if($product->stock < 1) disabled @endif>Add to Cart</button>
+</form>
 
         <div class="product-footer">
             <span class="price-lg">${{ number_format($product->price, 2) }}</span>

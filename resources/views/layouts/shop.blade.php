@@ -20,6 +20,9 @@
 
             <nav class="site-nav">
                 <a href="{{ route('home') }}" class="nav-link">Products</a>
+                <a href="{{ route('cart.index') }}" class="nav-link">
+    Cart ({{ collect(session('cart', []))->sum('quantity') }})
+</a>
 
                 @auth
                     @if (auth()->user()->is_admin)
