@@ -62,7 +62,7 @@ class ProductController extends Controller
         return response()->json(null, Response::HTTP_NO_CONTENT); // 204
     }
 
-    use Illuminate\Http\Request;
+    // use Illuminate\Http\Request;
 
 /**
  * GET /api/products/low-stock?threshold=10

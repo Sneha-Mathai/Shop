@@ -27,6 +27,7 @@ class CheckoutController extends Controller
         $total = collect($cart)->sum(fn ($item) => $item['price'] * $item['quantity']);
 
         $api = new Api(config('services.razorpay.key'), config('services.razorpay.secret'));
+        //dd([$total, (int) round($total * 100)]);
 
         // Razorpay expects the amount in paise (smallest currency unit)
         $razorpayOrder = $api->order->create([
